@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"  />
+        <meta name="viewport" content="width=1280, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="../../lib/css/animate.css">
+    </head>
+    <body>
+        <h2 id="console"></h2>
+
+        <!-- Abertura -->
+        <video id="abertura" src="./media/abertura.mp4?a=1"></video>
+        
+        <!-- Conteúdo -->
+        <div id="conteudo">
+            
+            <!-- Dados -->
+            <div id="conteudo1" class="conteudo fadein">
+                <img class="foto" id="foto1" />
+                <div class="nome" id="nome1">Nome 1</div>
+                <div class="texto" id="texto1">Texto 1</div>
+            </div>
+            <div id="conteudo2" class="conteudo fadein">
+                <img class="foto" id="foto2" />
+                <div class="nome" id="nome2">Nome 2</div>
+                <div class="texto" id="texto2">Texto 2</div>
+            </div>
+            <div id="conteudo3" class="conteudo fadein">
+                <img class="foto" id="foto3" />
+                <div class="nome" id="nome3">Nome 3</div>
+                <div class="texto" id="texto3">Texto 3</div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../../lib/js/jquery-3.1.1.min.js"></script>
+        <script src="../../lib/js/GnLib.js"></script>
+        <script>
+              
+            $(function () {
+                
+                //GnPlayer
+                if( !GnLib.getParam('preview') ) {
+                    
+                    //Carrega o conteúdo
+                    var DATA_SOURCE = "/EMPRESAS/somos_todos_antt_2016.xml";
+                    GnLib.autoloadContent(DATA_SOURCE, function(template) {
+                        var indices = [];
+                        indices.push(GnLib.getIndex(DATA_SOURCE, template.registros));
+                        indices.push(GnLib.getIndex(DATA_SOURCE, template.registros));
+                        indices.push(GnLib.getIndex(DATA_SOURCE, template.registros));
+                        for( i = 0; i < indices.length; i++ ) {
+                            var ind = indices[i];
+                            var registro = template.registros[ind];
+                            var k = i+1;
+                            var idx = GnLib.dataSource.lastIndexOf("/");
+                            var src = GnLib.dataSource.substr(0, idx) + "/img_" + registro.fileId + "." + registro.extId;
+                            $("#nome"+k).html(registro.nome);
+                            $("#texto"+k).html(registro.texto);
+                            $("#foto"+k).attr("src", src);
+                        }
+                    });
+                    
+                } else { //Preview
+                   
+                    //Autplay
+                    $("#abertura").ready(function() {
+                        GnPlay();
+                    });
+                }
+            });
+            
+            //Autoplay
+            function GnPlay() {
+                
+                //Dá play no vídeo
+                var video = $("#abertura").get(0);
+                video.play();
+                
+                //Agenda a exibição do conteúdo
+                var contentLoaded = false;
+                video.ontimeupdate = function() {
+                    if( video.currentTime > 5.2 && !contentLoaded ) {
+                        contentLoaded = true;
+                        
+                        $("#conteudo1").show();
+                        $("#conteudo1").addClass("fadein");
+                        setTimeout(function() {
+                            $("#conteudo2").show();
+                            $("#conteudo2").addClass("fadein");
+                            setTimeout(function() {
+                                $("#conteudo3").show();
+                                $("#conteudo3").addClass("fadein");
+                            }, 400);
+                        }, 400);
+                    }
+                };
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
+            }
+            
+        </script>
+    </body>
+</html>

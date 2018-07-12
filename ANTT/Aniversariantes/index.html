@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"  />
+        <meta name="viewport" content="width=1280, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="../../lib/css/animate.css">
+    </head>
+    <body>
+        <h2 id="console"></h2>
+
+        <!-- Abertura -->
+        <video id="abertura" src="./media/abertura.mp4"></video>
+        
+        <!-- Conteúdo -->
+        <div id="conteudo">
+            
+            <!-- Dados -->
+            <div id="nome">Nome</div>
+            <div id="departamento">Departamento</div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../../lib/js/jquery-3.1.1.min.js"></script>
+        <script src="../../lib/js/GnLib.js"></script>
+        <script>
+            
+            //Gera a data atual
+            /*var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            if( day < 10 ) {
+                day = "0"+day;
+            }
+            if( month < 10 ) {
+                month = "0"+month;
+            }
+            var currentDate = "2000-"+month+"-"+day+" 00:00:00";
+            GnLib.filter = {'data':currentDate};*/
+                    
+                    
+            $(function () {
+                
+                //GnPlayer
+                if( !GnLib.getParam('preview') ) {
+                    
+                    //Carrega o conteúdo
+                    var DATA_SOURCE = "/EMPRESAS/aniversariantes.xml";
+                    GnLib.autoloadContent(DATA_SOURCE);
+                    
+                } else { //Preview
+                   
+                    //Autplay
+                    $("#abertura").ready(function() {
+                        GnPlay();
+                    });
+                }
+            });
+            
+            //Autoplay
+            function GnPlay() {
+                
+                //Dá play no vídeo
+                var video = $("#abertura").get(0);
+                video.play();
+                
+                //Agenda a exibição do conteúdo
+                var contentLoaded = false;
+                video.ontimeupdate = function() {
+                    if( video.currentTime > 5.5 && !contentLoaded ) {
+                        console.log(video.currentTime);
+                        contentLoaded = true;
+                        
+                        $("#nome").show();
+                        $("#nome").addClass("fade-in");
+                        setTimeout(function() {
+                            $("#departamento").show();
+                            $("#departamento").addClass("fade-in");
+                        }, 200);
+                    }
+                };
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
+            }
+            
+        </script>
+    </body>
+</html>
