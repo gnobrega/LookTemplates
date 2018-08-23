@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Futura Std Bold';
+    src: url('./fonts/Futura Std Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Futura Std Book';
+    src: url('./fonts/Futura Std Book.otf') format('opentype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #062A2C;
+    overflow: hidden;
+}
+/* Dados */
+#conteudo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1360px;
+    height: 768px;
+    background: url(./media/bg.jpg);
+}
+div#site {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Futura Std Bold';    
+}
+div#titulo {
+    position: absolute;
+    left: 30px;
+    top: 635px;
+    font-family: 'Futura Std Book';
+    color: #fff;
+    font-size: 28px;
+    text-transform: uppercase;
+    display: none;
+}
+div#conteudo.semImagem #bg-text {
+    display: none;
+}
+div#conteudo.semImagem div#titulo {
+    font-family: 'Futura Std Book';
+    font-size: 22px;
+    top: 20px;
+    left: 310px;
+    display: none;
+}
+div#conteudo.semImagem div#texto {
+    text-align: center;
+    left: 150px;
+    top: 250px;
+    width: 1050px;
+    font-size: 55px;
+    line-height: 76px;
+}
+div#texto {
+    position: absolute;
+    left: 30px;
+    top: 682px;
+    font-family: 'Futura Std Book';
+    color: #fff;
+    font-size: 31px;
+    width: 1320px;
+    line-height: 35px;
+    display: none;
+}
+img#fileId {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+video#abertura {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+img#tag {
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+.tag-show {
+    animation-name: tag-show;
+    animation-duration: 1s;
+}
+.site-show {
+    animation-name: site-show;
+    animation-duration: 1s;
+}
+.title-show {
+    animation-name: title-show;
+    animation-duration: 1s;
+}
+.bar-show {
+    animation-name: bar-show;
+    animation-duration: 1s;
+}
+div#bg-text {
+    background: url(./media/bg-text.png);
+    position: absolute;
+    top: 614px;
+    left: 0;
+    height: 154px;
+    width: 1360px;
+}
+#midiaVideo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1360px;
+    height: 768px;
+    display: none;
+}
+/* animations */
+@keyframes tag-show{
+    from {
+        left: -214px;
+    }
+    to {
+        left: 0;
+    }
+}
+@keyframes site-show{
+    from {
+        right: -200px;
+    }
+    to {
+        right: 20px;
+    }
+}
+@keyframes title-show{
+    from {
+        left: -300px;
+    }
+    to {
+        left: 310px;
+    }
+}
+@keyframes bar-show{
+    from {
+        top:768px;
+    }
+    to {
+        top: 614px;
+    }
+}

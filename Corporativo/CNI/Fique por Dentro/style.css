@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Zurich Bold Extra Condensed BT';
+    src: url('./fonts/Zurich Bold Extra Condensed BT.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Zurich Condensed BT';
+    src: url('./fonts/Zurich Condensed BT.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Rounded-Elegance';
+    src: url('./fonts/Rounded-Elegance.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Medium';
+    src: url('./fonts/Avenir-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Black';
+    src: url('./fonts/Avenir-Black.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #fff;
+    overflow: hidden;
+}
+/* Dados */
+#conteudo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1360px;
+    height: 768px;
+}
+#moldura { 
+    position: absolute;
+    top: 0;
+    left: 4px;
+    width: 1360px;
+    height: 768px;
+    background: url(./media/moldura.png);
+}
+div#titulo {
+    position: absolute;
+    left: 13px;
+    top: 515px;
+    font-family: 'Zurich Condensed BT';
+    color: #fff;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #2a3947;
+}
+div#bgTitulo {
+    position:absolute;
+    top: 515px;
+    left: 4px;
+    width: 612px;
+    height: 49px;
+    background: url(./media/bg-titulo.png);
+}
+div#conteudo.semImagem #bgTitulo {
+    display: none;
+}
+div#conteudo.semImagem #titulo {
+    font-family: 'Avenir-Black';
+    font-size: 60px;
+    color: #000;
+    left: 50px;
+    top: 175px;
+    width: 1260px;
+    text-align: center;
+}
+div#conteudo.semImagem div#containerTexto {
+    top: 285px;
+    left: 135px;
+    width: 1090px;
+    color: #000;
+    font-family: 'Avenir-Medium';
+    text-align: center;
+}
+div#conteudo.semImagem div#containerTexto span {
+    background: none;
+    box-shadow: none;
+}
+div#containerTexto {
+    position: absolute;
+    left: 4px;
+    top: 570px;
+    font-family: 'Zurich Bold Extra Condensed BT';
+    color: #fff;
+    font-size: 38px;
+    width: 1320px;
+    padding-left: 8px;
+    z-index: 10;
+}
+div#containerTexto span {
+    /*background: rgba(0, 0, 0, 0.7);*/
+}
+div.bg-text {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    height: 50px;
+    width: 100px;
+    left: 4px;
+}
+div#hora {
+    position: absolute;
+    top: 680px;
+    left: 50px;
+    font-family: 'Rounded-Elegance';
+    font-size: 41px;
+    color: #fff;
+}
+div#dt {
+    position: absolute;
+    top: 725px;
+    left: 50px;
+    font-family: 'Rounded-Elegance';
+    font-size: 25px;
+    color: #fff;
+}
+img#fileId {
+    position: absolute;
+    top: 120px;
+    left: 4px;
+}

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"  />
+        <meta name="viewport" content="width=1280, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="../../lib/css/animate.css">
+    </head>
+    <body>
+        <h2 id="console"></h2>
+
+        <!-- Conteúdo -->
+        <div id="conteudo">
+            
+            <!-- Dados -->
+            <div id="periodo">Período</div>
+            <div id="texto">Texto</div>
+            <div id="local">Local</div>
+        </div>
+        
+        <!-- Abertura/fundo -->
+        <video id="abertura" src="./media/abertura.mp4"></video>
+
+        <!-- Scripts -->
+        <script src="../../lib/js/jquery-3.1.1.min.js"></script>
+        <script src="../../lib/js/GnLib.js"></script>
+        <script>
+            
+            $(function () {
+                
+                //GnPlayer
+                if( !GnLib.getParam('preview') ) {
+                    
+                    //Carrega o conteúdo
+                    var DATA_SOURCE = "/EMPRESAS/agenda_antt_2016.xml";
+                    GnLib.autoloadContent(DATA_SOURCE);
+                    
+                } else { //Preview
+                   
+                    //Autplay
+                    $("#abertura").ready(function() {
+                        GnPlay();
+                    });
+                }
+            });
+            
+            //Autoplay
+            function GnPlay() {
+                
+                //Dá play no vídeo
+                var video = $("#abertura").get(0);
+                video.play();
+                
+                //Agenda a exibição do conteúdo
+                var contentLoaded = false;
+                video.ontimeupdate = function() {
+                    if( video.currentTime > 6.2 && !contentLoaded ) {
+                        contentLoaded = true;
+                        
+                        //Período
+                        $("#periodo").show();
+                        $("#periodo").addClass('show-periodo');
+                        
+                        //Texto
+                        setTimeout(function() {
+                            $("#texto").show();
+                            $("#texto").addClass('animated zoomIn fadeIn');
+                        }, 600);
+                        
+                        //Local
+                        setTimeout(function() {
+                            $("#local").show();
+                            $("#local").addClass('animated fadeIn zoomIn');
+                        }, 1600);
+                    }
+                };
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost/html5") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"  />
+        <meta name="viewport" content="width=1280, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="../../lib/css/animate.css">
+    </head>
+    <body>
+        <h2 id="console"></h2>
+
+        <!-- Conteúdo -->
+        <div id="conteudo">
+            
+            <!-- Imagem -->
+            <img id="fileId" />
+            
+            <!-- Moldura -->
+            <div id="moldura"></div>
+            
+            <!-- Dados -->
+            <div id="bgTitulo"></div>
+            <div id="titulo">Nome</div>
+            <div id="containerTexto">
+                <span id="texto">Texto</span>
+            </div>
+            
+            <!-- Relógio -->
+            <div id="hora">00:00:00</div>
+            <div id="dt">Data</div>
+        </div>
+        
+        <!-- Scripts -->
+        <script src="../../lib/js/jquery-3.1.1.min.js"></script>
+        <script src="../../lib/js/GnLib.js"></script>
+        <script>
+            var comImagem = true;
+            var ext;
+            $(function () {
+                
+                //GnPlayer
+                if( !GnLib.getParam('preview') ) {
+                    
+                    //Carrega o conteúdo
+                    var DATA_SOURCE = "/EMPRESAS/fique_por_dentro.xml";
+                    GnLib.autoloadContent(DATA_SOURCE, function(template) {
+                        if( $("#fileId").attr("src") ) {
+                            comImagem = true;
+                            ext = $("#fileId").attr("src").substr(-3);
+                            if (ext == "mp4") {
+                                $("img#fileId").hide();
+                                $("video#midiaVideo").show();
+                                $("video#midiaVideo").attr("src", $("#fileId").attr("src"));
+                                $("video#midiaVideo").get(0).play();
+                            }
+                            
+                            //Adiciona o fundo ao texto
+                            var texto = $("#texto").text();
+                            var limite = 91;
+                            if( texto.length > limite ) {
+                                
+                                //Mais linhas
+                                $("#texto").html($("#texto").text().substr(0,limite));
+                            }
+                            
+                            //Fundo da primeira linha
+                            var bgText = $("<div class='bg-text'></div>");
+                            bgText.css("top", "567px");
+                            bgText.css("width", $("#texto").width()+14+"px");
+                            $("#conteudo").append(bgText);
+                        } else {
+                            comImagem = false;
+                            $("#conteudo").addClass("semImagem");
+                        }
+                    });
+                    
+                } else { //Preview
+                   GnPlay();
+                }
+            });
+            
+            //Autoplay
+            function GnPlay() {
+                
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost/html5") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
+            }
+            
+            //Atualiza o relógio
+            setInterval(atualizarRelogio, 200);
+            function atualizarRelogio() {
+                var d = new Date();
+                var horas = d.getHours();
+                var minutos = d.getMinutes();
+                var segundos = d.getSeconds();
+                if (horas < 10) {
+                    horas = "0" + horas;
+                }
+                if (minutos < 10) {
+                    minutos = "0" + minutos;
+                }
+                if (segundos < 10) {
+                    segundos = "0" + segundos;
+                }
+                $("#hora").html(horas+":"+minutos+":"+segundos);
+            }
+            
+            //Atualiza a data
+            atualizarData();
+            function atualizarData() {
+                var MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                var d = new Date();
+                var dia = d.getDate();
+                var mes = d.getMonth();
+                var ano = d.getFullYear();
+                $("#dt").html(dia + " de " + MESES[mes] + " de " + ano);
+            }
+            
+        </script>
+    </body>
+</html>

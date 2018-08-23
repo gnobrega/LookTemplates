@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Futura Std Medium';
+    src: url('./fonts/Futura Std Medium.otf') format('opentype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #F75D13;
+    overflow: hidden;
+}
+/* Dados */
+#conteudo { 
+}
+div#guarnicoes, div#carnes, div#saladas {
+    position: absolute;
+    font-family: 'Futura Std Medium';
+    color: #fff;
+    top: 310px;
+    font-size: 20px;
+    width: 260px;
+    text-align: center;
+    display: none;
+}
+div#guarnicoes {
+    left: 28px;
+}
+div#carnes {
+    left: 301px;
+}
+div#saladas {
+    left: 580px;
+}

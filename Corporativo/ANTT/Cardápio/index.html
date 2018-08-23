@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"  />
+        <meta name="viewport" content="width=1280, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="../../lib/css/animate.css">
+    </head>
+    <body>
+        <h2 id="console"></h2>
+
+        <!-- Abertura -->
+        <video id="abertura" src="./media/abertura.mp4"></video>
+        
+        <!-- Conteúdo -->
+        <div id="conteudo">
+            
+            <!-- Dados -->
+            <div id="guarnicoes">Guarnições</div>
+            <div id="carnes">Carnes</div>
+            <div id="saladas">Saladas</div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../../lib/js/jquery-3.1.1.min.js"></script>
+        <script src="../../lib/js/GnLib.js"></script>
+        <script>    
+            $(function () {
+                
+                //GnPlayer
+                if( !GnLib.getParam('preview') ) {
+                    
+                    //Carrega o conteúdo
+                    var DATA_SOURCE = "/EMPRESAS/cardapio.xml";
+                    var currentDate = new Date();
+                    var itens = [];
+                    GnLib.autoloadContent(DATA_SOURCE, function(template) {
+                        
+                        //Extrai os dados do cardápio
+                        for( i in template.registros ) {
+                            var registro = template.registros[i];
+                            var data = registro.data;
+                            var dataParams = data.split("-");
+                            var ano = parseInt(dataParams[0]);
+                            var mes = parseInt(dataParams[1])-1;
+                            var dia = parseInt(dataParams[2]);
+                            if (currentDate.getDate() == dia 
+                                    && currentDate.getMonth() == mes 
+                                    && currentDate.getFullYear() == ano ) {
+                                itens.push({
+                                    'alimento': registro.alimento,
+                                    'categoria': registro.categoria,
+                                    'data': dataParams[2]+"/"+dataParams[1]
+                                });
+                            }
+                        }
+                        if( itens.length == 0 ) {
+                            GnLib.dump();
+                        } else {
+                            $("#guarnicoes").html("");
+                            $("#carnes").html("");
+                            $("#saladas").html("");
+                            for(var j = 0; j < itens.length; j++){
+                                switch(itens[j].categoria){
+                                    case "Guarnições": 
+                                        $("#guarnicoes").append(itens[j].alimento+"<br>");
+                                        break;
+                                    case "Carnes / Proteínas": 
+                                        $("#carnes").append(itens[j].alimento+"<br>");
+                                        break;
+                                    case "Saladas": 
+                                        $("#saladas").append(itens[j].alimento+"<br>");
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                    
+                } else { //Preview
+                   
+                    //Autplay
+                    $("#abertura").ready(function() {
+                        GnPlay();
+                    });
+                }
+            });
+            
+            //Autoplay
+            function GnPlay() {
+                
+                //Dá play no vídeo
+                var video = $("#abertura").get(0);
+                video.play();
+                
+                //Agenda a exibição do conteúdo
+                var contentLoaded = false;
+                video.ontimeupdate = function() {
+                    if( video.currentTime > 5.5 && !contentLoaded ) {
+                       setTimeout(function() {
+                           $("#guarnicoes").fadeIn(1000);
+                           setTimeout(function() {
+                                $("#carnes").fadeIn(1000);
+                                setTimeout(function() {
+                                    $("#saladas").fadeIn(1000);
+                                }, 800);
+                            }, 800);
+                       }, 1000);
+                    }
+                };
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost/html5") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
+            }
+            
+        </script>
+    </body>
+</html>
