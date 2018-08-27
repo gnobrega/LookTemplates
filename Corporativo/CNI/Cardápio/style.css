@@ -39,6 +39,15 @@ body {
     left: 0;
     background: url(./media/fundo.jpg);
 }
+div#titulo {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    font-size: 68px;
+    color: #fff;
+    font-family: 'Rounded-Elegance';
+    display: none;
+}
 div#hora {
     position: absolute;
     top: 680px;
@@ -79,4 +88,16 @@ div.categoria div.item {
     font-size: 38px;
     font-family: 'Helvetica-Light';
     margin-bottom: 2px;
+}
+.show-title {
+    animation-name: show-title;
+    animation-duration: 1s;
+}
+@keyframes show-title{
+    from {
+        left: -200px;
+    }
+    to {
+        left: 60px;
+    }
 }

@@ -38,6 +38,25 @@ body {
     width: 1360px;
     height: 768px;
 }
+#blackout {
+    width: 1360px;
+    height: 768px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 999;
+}
+div#pg-titulo {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    font-size: 56px;
+    color: #fff;
+    font-family: 'Rounded-Elegance';
+    z-index: 10;
+    display: none;
+}
 #moldura { 
     position: absolute;
     top: 0;
@@ -91,21 +110,20 @@ div#conteudo.semImagem div#containerTexto span {
 div#containerTexto {
     position: absolute;
     left: 4px;
-    top: 570px;
+    top: 567px;
     font-family: 'Zurich Bold Extra Condensed BT';
     color: #fff;
     font-size: 38px;
     width: 1320px;
-    padding-left: 8px;
     z-index: 10;
 }
 div#containerTexto span {
-    /*background: rgba(0, 0, 0, 0.7);*/
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0 10px;
 }
 div.bg-text {
     position: absolute;
-    background: rgba(0, 0, 0, 0.7);
-    height: 50px;
+    height: 47px;
     width: 100px;
     left: 4px;
 }
@@ -129,4 +147,16 @@ img#fileId {
     position: absolute;
     top: 120px;
     left: 4px;
+}
+.show-title {
+    animation-name: show-title;
+    animation-duration: 1s;
+}
+@keyframes show-title{
+    from {
+        left: -200px;
+    }
+    to {
+        left: 60px;
+    }
 }
