@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Myriad Pro Regular';
+    src: url('./fonts/Myriad Pro Regular.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #fff;
+    overflow: hidden;
+}
+#topo {
+    height: 49px;
+    width: 1360px;
+    position: absolute;
+    left: 0;
+    background: url("./media/topo-azul.png");
+    text-align: center;
+    color: #fff;
+    font-size: 34px;
+    font-family: 'Myriad Pro Regular';
+    padding-top: 56px;
+}
+video#fundo {
+    position: absolute;
+    top: 0;
+}
+/* Dados */
+#conteudo { 
+    position: absolute;
+    width: 1360px;
+    height: 768px;
+    background: url(./media/fundo.jpg) no-repeat 54px 120px;
+}
+
+/* animation */
+.cortina {
+    animation-name: cortina;
+    animation-duration: 1s;
+}
+@keyframes cortina{
+    from {
+        top: 0;
+    }
+    to {
+        top: -768px;
+    }
+}
