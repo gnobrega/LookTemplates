@@ -76,9 +76,6 @@
             //Autoplay
             function GnPlay() {
 
-                //Agenda o avanço do módulo
-                loadForceAdvance();
-
                 //Dá play no vídeo
                 var video = $("#fundo").get(0);
                 video.play();
@@ -147,23 +144,6 @@
             function getHeight(oWidth, oHeight, width) {
                 var height = width * oHeight / oWidth;
                 return height;
-            }
-
-            //Avança para o próximo template
-            function loadForceAdvance() {
-                if (ext == 'jpg') {
-                    setTimeout(function () {
-                        if (typeof (GnContentAdvance) != 'undefined') {
-                            GnContentAdvance();
-                        }
-                    }, DURATION);
-                } else {
-                    $("#midiaVideo").eq(0).on("ended", function () {
-                        if (typeof (GnContentAdvance) != 'undefined') {
-                            GnContentAdvance();
-                        }
-                    });
-                }
             }
 
         </script>

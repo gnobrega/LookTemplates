@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Futura Std Medium Oblique';
+    src: url('./fonts/Futura Std Medium Oblique.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Futura Std Heavy';
+    src: url('./fonts/Futura Std Heavy.otf') format('opentype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #000;
+    overflow: hidden;
+}
+video#fundo {
+}
+#fundo-grade {
+    position: absolute;
+    top: 330px;
+    left: 123px;
+    display: none;
+}
+/* Dados */
+#conteudo { 
+}
+#topo div {
+    position: absolute;
+    color: #000000;
+    font-size: 26px;
+    font-family: 'Futura Std Heavy';
+    top: 334px;
+    width: 182px;
+    text-align: center;
+    display: none;
+}
+#topo .dia0 {
+    left: 130px;
+    width: auto;
+}
+.horario {
+    position: absolute;
+    color: #000000;
+    font-size: 26px;
+    font-family: 'Futura Std Medium Oblique';
+    left: 137px;
+    text-align: center;
+    display: none;
+}
+.linha1 {
+    top: 383px;
+}
+.linha2 {
+    top: 430px;
+}
+.linha3 {
+    top: 477px;
+}
+.linha4 {
+    top: 525px;
+}
+.linha5 {
+    top: 573px;
+}
+.linha6 {
+    top: 621px;
+}
+.dia1 {
+    left: 233px;
+}
+.dia2 {
+    left: 437px;
+}
+.dia3 {
+    left: 642px;
+}
+.dia4 {
+    left: 842px;
+}
+.dia5 {
+    left: 1045px;
+}
+.dia6 {
+    left: 1245px;
+}
+.aula {
+    position: absolute;
+    width: 182px;
+    height: 30px;
+    color: #000000;
+    font-size: 26px;
+    font-family: 'Futura Std Medium Oblique';
+    text-align: center;
+    display: none;
+}
+
+/* animation */
+.show-grade {
+    animation-name: show-grade;
+    animation-duration: .5s;
+}
+@keyframes show-grade{
+    from {
+        top: 800px;
+    }
+    to {
+        top: 330px;
+    }
+}

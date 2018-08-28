@@ -83,9 +83,9 @@
                             for( p in listaPratos ) {
                                 listaPratos[p].render();
                             }
-                            GnContentFoundBkp();
-                        } else {
-                            GnLib.dump();
+                            if( typeof(GnContentFoundBkp) != 'undefined' ) {
+                                GnContentFoundBkp();
+                            }
                         }
                     });
                 } else { //Preview
