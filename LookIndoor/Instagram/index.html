@@ -71,6 +71,13 @@
                     //Autplay
                     GnPlay();
                 }
+                
+                //Autoplay - localhost
+                if (window.location.href.indexOf("localhost/html5") > -1) {
+                    setTimeout(function() {
+                        GnPlay();
+                    }, 1000);
+                }
             });
 
             //Autoplay
@@ -78,7 +85,13 @@
 
                 //Dá play no vídeo
                 var video = $("#fundo").get(0);
-                video.play();
+                if( video.readyState == 4 ) {
+                    video.play();
+                } else {
+                    video.onloadeddata = function() {
+                        video.play();
+                    }
+                }
 
                 //Agenda a exibição do conteúdo
                 var contentLoaded = false;
@@ -102,13 +115,6 @@
                         $("#hashtag").addClass("show-hashtag");
                     }
                 }
-            }
-
-            //Autoplay - localhost
-            if (window.location.href.indexOf("localhost/html5") > -1) {
-                setTimeout(function () {
-                    GnPlay();
-                }, 1000);
             }
 
             //Redimensiona a mídia

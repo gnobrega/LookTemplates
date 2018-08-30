@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('./fonts/Roboto-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('./fonts/Roboto-Light.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #fff;
+    overflow: hidden;
+}
+/* Dados */
+#conteudo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1360px;
+    height: 768px;
+}
+#fundo {
+    width: 1360px;
+    height: 768px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+div#titulo {
+    position: absolute;
+    left: 800px;
+    top: 200px;
+    font-family: 'Roboto-Medium';
+    color: #424242;
+    font-size: 30px;
+}
+div#nota_info {
+    position: absolute;
+    left: 800px;
+    top: 245px;
+    font-family: 'Roboto-Light';
+    color: #1382BF;
+    font-size: 41px;
+    width: 540px;
+}
+img#fileId {
+    position: absolute;
+    top: 200px;
+    left: 20px;    
+    width: 760px;
+    display: none;
+}
+#ctImg, #dados {
+    display: none;
+}
+.exibir-dados {
+    animation-name: exibir-dados;
+    animation-duration: 1s;
+}
+@keyframes exibir-dados{
+    from {
+        left:850px;
+        opacity: 0;
+    }
+    to {
+        left:800px;
+        opacity: 1;
+    }
+}

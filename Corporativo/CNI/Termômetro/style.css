@@ -2,6 +2,10 @@
     font-family: 'Myriad Pro Regular';
     src: url('./fonts/Myriad Pro Regular.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'Myriad Pro Semibold';
+    src: url('./fonts/Myriad Pro Semibold.ttf') format('truetype');
+}
 * {
     margin: 0;
     padding: 0;
@@ -29,6 +33,64 @@ body {
 video#fundo {
     position: absolute;
     top: 0;
+}
+div.box {
+    position: absolute;
+    width: 313px;
+    height: 163px;
+}
+div.box div {
+    color: #fff;
+    font-family: 'Myriad Pro Semibold';
+    width: 244px;
+    float: left;
+}
+div.box.positivo {
+    background: #2769B5;
+}
+div.box.negativo {
+    background: #C91200;
+}
+div.box div.titulo {
+    font-size: 21px;
+    margin: 15px 0 0 10px;
+}
+div.box div.valor {
+    font-size: 34px;
+    margin: 5px 0 0 10px;
+}
+div.box div.periodo {
+    font-family: 'Myriad Pro Regular';
+    font-size: 18px;
+    margin: 5px 0 0 10px;
+}
+div.box div.detalhes {
+    font-family: 'Myriad Pro Regular';
+    font-size: 14px;
+    margin: 5px 0 0 10px;
+    width: 200px;
+}
+div.box img.icone {
+    float: right;
+    margin: 10px 10px 0 0;
+}
+.lin1 {
+    top: 163px;
+}
+.lin2 {
+    top: 336px;
+}
+.lin3 {
+    top: 509px;
+}
+.col1 {
+    left: 181px;
+}
+.col2 {
+    left: 508px;
+}
+.col3 {
+    left: 830px;
 }
 /* Dados */
 #conteudo { 

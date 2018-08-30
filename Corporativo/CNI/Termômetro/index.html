@@ -31,12 +31,18 @@
             $(function () {
                 
                 //Cria os boxes
-                for( i = 1; i < 9; i++ ) {
-                    var box = $("<div id='box"+i+"' class='box'></div>");
-                    box.append("<div class='titulo'></div>");
-                    box.append("<div class='valor'></div>");
-                    box.append("<div class='periodo'></div>");
-                    box.append("<div class='descricao'></div>");
+                var b = 0;
+                for( i = 1; i <= 3; i++ ) {
+                    for( j = 1; j <= 3; j++ ) {
+                        b++;
+                        var box = $("<div id='box"+b+"' class='box lin"+i+" col"+j+"'></div>");
+                        box.append("<img src='./media/icons/1.png' class='icone' />");
+                        box.append("<div class='titulo'>Título</div>");
+                        box.append("<div class='valor'>Valor</div>");
+                        box.append("<div class='periodo'>Período</div>");
+                        box.append("<div class='detalhes'>Detalhes</div>");
+                        $("#boxes").append(box);
+                    }
                 }
                 
                 //GnPlayer
@@ -85,9 +91,9 @@
                     success: function (data) {
                         var itens = [];
                         var list = $(data).find("item");
-                        $(list).each(function() {
+                        $(list).each(function(i) {
                             var item = {
-                                titulo  	: $(this).find("chave").text(),
+                                titulo  	: $(this).find("titulo").text(),
                                 valor  		: $(this).find("valor").text(),
                                 periodo  	: $(this).find("periodo").text(),
                                 detalhes  	: $(this).find("detalhes").text(),
@@ -96,6 +102,23 @@
                                 chave  		: $(this).find("chave").text(),
                             }
                             itens.push(item);
+                            
+                            var key = i + 1;
+                            $("#box"+key).find("div.titulo").html(item.titulo);
+                            $("#box"+key).find("div.valor").html(item.valor);
+                            $("#box"+key).find("div.periodo").html(item.periodo);
+                            $("#box"+key).find("div.detalhes").html(item.detalhes);
+                            $("#box"+key).addClass(item.fundo);
+                            switch( item.icone ) {
+                                case "ascendente":
+                                    $("#box"+key).find("img").attr("src", "./media/icons/2.png");
+                                    break;
+                                case "descendente":
+                                    $("#box"+key).find("img").attr("src", "./media/icons/3.png");
+                                    break;
+                                default:
+                                    $("#box"+key).find("img").attr("src", "./media/icons/1.png");
+                            }
                         });
                         
                         //Preenche os boxes
