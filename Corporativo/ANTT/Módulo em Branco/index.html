@@ -16,7 +16,7 @@
             <img id="fileId" />
 
             <!-- Video -->
-            <video id="midiaVideo" autoplay ></video>
+            <video id="midiaVideo" ></video>
         </div>
 
         <!-- Scripts -->
@@ -37,9 +37,7 @@
                         ext = $("#fileId").attr("src").substr(-3);
                         if (ext == "mp4") {
                             $("img#fileId").hide();
-                            $("video#midiaVideo").show();
                             $("video#midiaVideo").attr("src", $("#fileId").attr("src"));
-                            $("video#midiaVideo").get(0).play();
                         }
                     });
 
@@ -52,9 +50,27 @@
 
             //Autoplay
             function GnPlay() {
+                if (ext == "mp4") {
+                    $("video#midiaVideo").show();
+                    if ($("video#midiaVideo").get(0).readyState == 4) {
+                        $("video#midiaVideo").get(0).play();
+                    } else {
+                        //Erro
+                        advanceErro();
+                    }
+                }
 
                 //Agenda o avanço do módulo
                 loadForceAdvance();
+            }
+
+            //Força o salto em caso de erro
+            function advanceErro() {
+                if (typeof (GnContentAdvance) != 'undefined') {
+                    GnContentAdvance();
+                } else {
+                    setTimeout(advanceErro, 1000);
+                }
             }
 
             //Autoplay - localhost

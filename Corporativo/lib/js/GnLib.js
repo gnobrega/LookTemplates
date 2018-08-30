@@ -127,12 +127,38 @@ var GnLib = {
      * Aplica filtros a lista de registros
      */
     applyFilters: function(registros) {
+        
+        //Filtra por atributo
         for( attr in GnLib.filter ) {
             var tmp = [];
             for( r in registros ) {
                 if( registros[r][attr] && registros[r][attr] == GnLib.filter[attr] ) {
                     tmp.push(registros[r]);
                 }
+            }
+            registros = tmp;
+        }
+        
+        //Filtra por agendamento
+        var date = new Date();
+        var horaAtual = date.toISOString().substr(0, 10) + " ";
+        horaAtual += date.toLocaleTimeString();
+        if( registros.length > 0 && registros[0].schedule_start != undefined ) {
+            tmp = [];
+            for( r in registros ) {
+                var registro = registros[r];
+                
+                //Início
+                if( registro.schedule_start && registro.schedule_start > horaAtual ) {
+                    break;
+                }
+                
+                //Fim
+                if( registro.schedule_end && registro.schedule_end < horaAtual ) {
+                    break;
+                }
+                
+                tmp.push(registro);
             }
             registros = tmp;
         }
