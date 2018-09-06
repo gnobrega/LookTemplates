@@ -36,6 +36,13 @@ body {
     top: 0px;
     left: 0;
 }
+#calhau {
+    width: 1360px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: none;
+}
 #fundo {
     width: 1360px;
     height: 704px;

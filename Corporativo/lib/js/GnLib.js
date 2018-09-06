@@ -143,19 +143,21 @@ var GnLib = {
         var date = new Date();
         var horaAtual = date.toISOString().substr(0, 10) + " ";
         horaAtual += date.toLocaleTimeString();
+
         if( registros.length > 0 && registros[0].schedule_start != undefined ) {
+            
             tmp = [];
             for( r in registros ) {
                 var registro = registros[r];
-                
+
                 //Início
                 if( registro.schedule_start && registro.schedule_start > horaAtual ) {
-                    break;
+                    continue;
                 }
                 
                 //Fim
                 if( registro.schedule_end && registro.schedule_end < horaAtual ) {
-                    break;
+                    continue;
                 }
                 
                 tmp.push(registro);

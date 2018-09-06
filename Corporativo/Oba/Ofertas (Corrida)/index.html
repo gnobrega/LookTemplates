@@ -32,6 +32,9 @@
                 <div id="fechamento"></div>
             </div>
             
+            <!-- Calhau -->
+            <video id="calhau" src="./media/calhau.mp4?a=1" ></video>
+            
         </div>
         
         <!-- Scripts -->
@@ -41,6 +44,7 @@
             
             var comImagem = true;
             var ext;
+            var possuiConteudo = true;
             $(function () {
                 
                 //GnPlayer
@@ -63,16 +67,21 @@
             
             //Autoplay
             function GnPlay() {
-                $("#abertura").get(0).play();
-                setTimeout(function() {
-                    $("#abertura").css("top", "-630px");
-                    $("#abertura").addClass("subir-abertura");
-                }, 2000);
-                
-                setTimeout(function() {
-                    $("#ctFechamento").show();
-                    $("#fechamento").addClass("fechar");
-                }, 11700);
+                if( possuiConteudo ) {
+                    $("#abertura").get(0).play();
+                    setTimeout(function() {
+                        $("#abertura").css("top", "-630px");
+                        $("#abertura").addClass("subir-abertura");
+                    }, 2000);
+
+                    setTimeout(function() {
+                        $("#ctFechamento").show();
+                        $("#fechamento").addClass("fechar");
+                    }, 11700);
+                } else {
+                    $("#calhau").show();
+                    $("#calhau").get(0).play();
+                }
             }
             
             //Autoplay - localhost
@@ -82,6 +91,10 @@
                 }, 1000);
             }
             
+            //Chama o calhau
+            GnLib.dump = function() {
+                possuiConteudo = false;
+            }
         </script>
     </body>
 </html>
