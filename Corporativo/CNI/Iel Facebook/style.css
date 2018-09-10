@@ -44,6 +44,7 @@ div.texto {
     width: 1080px;
     opacity: 1;
     display: none;
+    line-height: 43px;
 }
 div.texto a {
     color: #000;
