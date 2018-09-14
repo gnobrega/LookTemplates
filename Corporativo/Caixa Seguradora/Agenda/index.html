@@ -8,9 +8,6 @@
     </head>
     <body>
         <h2 id="console"></h2>
-        
-        <!-- Fundo -->
-        <video id="fundo" src="./media/fundo-com-foto.mp4"></video>
 
         <!-- Conteúdo -->
         <div id="conteudo">
@@ -34,7 +31,8 @@
                     
                     //Carrega o conteúdo
                     var DATA_SOURCE = "/EMPRESAS/agenda.xml";
-                    GnLib.autoloadContent(DATA_SOURCE, function(template) {});
+                    GnLib.autoloadContent(DATA_SOURCE, function(template) {
+                    });
                     
                 } else { //Preview
                    
@@ -47,10 +45,15 @@
             
             //Autoplay
             function GnPlay() {
+                $("#barra").show();
+                $("#barra").addClass("subir-barra");
                 
-                //Dá play no vídeo
-                var video = $("#fundo").get(0);
-                video.play();
+                $("#ctImg").show();
+                $("#fileId").hide();
+                $("#fileId").fadeIn();
+                
+                $("#texto").show();
+                $("#texto").addClass("mostrar-texto");
             }
             
             //Autoplay - localhost

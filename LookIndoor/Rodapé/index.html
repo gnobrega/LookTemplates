@@ -68,6 +68,15 @@
         <script src="../../lib/js/GnLib.js"></script>
         <script>
             var DATA_SOURCE = "/CONTEUDO/PREVISAO/previsao.xml";
+            
+            //Dá o Ok sobre o carregamento com sucesso
+            if (typeof (GnContentFound) != 'undefined') {
+                GnContentFound();
+            }
+            
+            function GnPlay() {
+                
+            }
 
             //Recupera a hora
             autoloadFooter();
