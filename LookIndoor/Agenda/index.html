@@ -55,6 +55,11 @@
 
             //Autoplay
             function GnPlay() {
+			
+				//Ajusta o zoom até enquadrar na tela
+                var zoom = window.innerWidth / 1360;
+                $("body").css('-moz-transform', "scale("+zoom+","+zoom+")");
+                $("body").css('zoom', zoom);
                 
                 //Dá play no vídeo de fundo
                 $('#fundo').get(0).play();

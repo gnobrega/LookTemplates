@@ -55,7 +55,6 @@ img#fileId {
     top: 200px;
     left: 20px;    
     width: 760px;
-    display: none;
 }
 #ctImg, #dados {
     display: none;

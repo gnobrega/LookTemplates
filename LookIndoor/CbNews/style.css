@@ -21,6 +21,7 @@ html, body {
 body {
     background: #00376d;
     overflow: hidden;
+	-moz-transform-origin: 0 0;
 }
 /* Dados */
 #conteudo { 

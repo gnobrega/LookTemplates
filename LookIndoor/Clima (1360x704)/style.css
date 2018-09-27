@@ -17,6 +17,7 @@ html, body {
 body {
     background: #000;
     overflow: hidden;
+	-moz-transform-origin: 0 0;
 }
 video#fundo {
     position: absolute;

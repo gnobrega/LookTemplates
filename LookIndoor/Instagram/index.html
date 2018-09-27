@@ -13,7 +13,7 @@
         <div id="conteudo">
 
             <!-- Fundo -->
-            <video id="fundo" src="./media/fundo.mp4"></video>
+            <video id="fundo" src="./media/fundo.mp4" muted></video>
 
             <!-- Dados -->
             <div id="usuario"></div>
@@ -82,6 +82,11 @@
 
             //Autoplay
             function GnPlay() {
+			
+				//Ajusta o zoom até enquadrar na tela
+                var zoom = window.innerWidth / 1360;
+                $("body").css('-moz-transform', "scale("+zoom+","+zoom+")");
+                $("body").css('zoom', zoom);
 
                 //Dá play no vídeo
                 var video = $("#fundo").get(0);
