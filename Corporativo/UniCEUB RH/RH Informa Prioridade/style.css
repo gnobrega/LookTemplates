@@ -25,6 +25,12 @@ body {
     position: absolute;
     display: none;
 }
+#cortina { 
+    width: 1360px;
+    height: 768px;
+    position: absolute;
+    background: #000;
+}
 .frame1 {
     background: url(./media/frame1.jpg);
 }
@@ -83,4 +89,16 @@ video#abertura {
     position: absolute;
     top: 0;
     left: 0;
+}
+.esconde-abertura {
+    animation-name: esconde-abertura;
+    animation-duration: .3s;
+}
+@keyframes esconde-abertura{
+    from {
+        top: 0;
+    }
+    to {
+        top: -768px;
+    }
 }

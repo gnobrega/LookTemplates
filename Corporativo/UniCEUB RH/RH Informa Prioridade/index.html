@@ -26,6 +26,9 @@
             <div id="editorias">Editorias</div>
             <img id="img0" />
         </div>
+        
+        <!-- Cortina -->
+        <div id="cortina"></div>
 
         <!-- Scripts -->
         <script src="../../lib/js/jquery-3.1.1.min.js"></script>
@@ -88,39 +91,43 @@
             function GnPlay() {
 
                 //Dá play no vídeo
-                var video = $("#abertura").get(0);
-                video.play();
+                //var video = $("#abertura").get(0);
+                //video.play();
+                $("#cortina").hide();
+                
+                setTimeout(function() {
+                    $("#abertura").css('top', '768px');
+                    $("#abertura").addClass('esconde-abertura');
+                    //Exibe o conteúdo
+                    $("#conteudo").fadeIn();
 
-                //Agenda a exibição do conteúdo
-                var contentLoaded = false;
-                video.ontimeupdate = function () {
-                    if (video.currentTime > 1.3 && !contentLoaded) {
-                        contentLoaded = true;
-                        
-                        //Exibe o conteúdo
-                        $("#conteudo").fadeIn();
+                    //Exibe o texto inicial
+                    $("#titulo").fadeIn();
+                    $("#texto1").fadeIn();
+                }, 2000);
+                
+                //Substitui o texto
+                setTimeout(function () {
+                    $("#texto1").fadeOut(function () {
+                        $("#texto2").fadeIn();
 
-                        //Exibe o texto inicial
-                        $("#titulo").fadeIn();
-                        $("#texto1").fadeIn();
-
-                        //Substitui o texto
+                        //Exibe as demais informações
                         setTimeout(function () {
-                            $("#texto1").fadeOut(function () {
-                                $("#texto2").fadeIn();
-
-                                //Exibe as demais informações
-                                setTimeout(function () {
-                                    $("#texto2").fadeOut(function () {
-                                        $("#informacoes").fadeIn();
-                                        $("#ramal").fadeIn();
-                                        $("#email").fadeIn();
-                                    });
-                                }, 9300);
+                            $("#texto2").fadeOut(function () {
+                                $("#informacoes").fadeIn();
+                                $("#ramal").fadeIn();
+                                $("#email").fadeIn();
                             });
-                        }, 9100);
-                    }
-                };
+                        }, 9300);
+                    });
+                }, 9100);
+            }
+            
+            //Autoplay - localhost
+            if( window.location.href.indexOf("localhost/html5") > -1 ) {
+                setTimeout(function() {
+                    GnPlay();
+                }, 1000);
             }
         </script>
     </body>
