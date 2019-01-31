@@ -25,6 +25,13 @@ body {
 /* Dados */
 #conteudo { 
 }
+#calhau {
+    width: 1360px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: none;
+}
 div#texto {
     position: absolute;
     font-family: 'Futura-T-OT-Book';

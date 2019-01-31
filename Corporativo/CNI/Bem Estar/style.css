@@ -38,12 +38,12 @@ div#texto {
 }
 div.texto {
     position: absolute;
-    left: 350px;
+    left: 250px;
     top: 270px;
     font-family: 'Helvetica-Black';
     color: #000000;
     font-size: 47px;
-    width: 660px;
+    width: 860px;
     opacity: 1;
     display: none;
     text-align: center;

@@ -27,6 +27,13 @@ body {
     height: 768px;
     background: url(./media/bg.jpg);
 }
+#calhau {
+    width: 1360px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: none;
+}
 div#site {
     position: absolute;
     top: 20px;

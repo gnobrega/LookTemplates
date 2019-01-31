@@ -70,41 +70,46 @@
             //Autoplay
             function GnPlay() {
                 
-                //Dá play no vídeo
-                var video = $("#abertura").get(0);
-                video.play();
-                
-                //Agenda a exibição do conteúdo
-                var contentLoaded = false;
-                video.ontimeupdate = function() {
-                    if( video.currentTime >= 2 && !contentLoaded ) {
-                        contentLoaded = true;
-                        
-                        //Animação
-                        $("#abertura").fadeOut();
-                        $("#site").addClass("site-show");
-                        $("#tag").addClass("tag-show");
-                        
-                        //Com imagem
-                        if( comImagem ) {
-                            $("#bg-text").addClass("bar-show");
-                            
-                            setTimeout(function() {
-                                $("#titulo").fadeIn();
+                if( $("#titulo").html() != "Nome" ) {
+                    
+                    //Dá play no vídeo
+                    var video = $("#abertura").get(0);
+                    video.play();
+
+                    //Agenda a exibição do conteúdo
+                    var contentLoaded = false;
+                    video.ontimeupdate = function() {
+                        if( video.currentTime >= 2 && !contentLoaded ) {
+                            contentLoaded = true;
+
+                            //Animação
+                            $("#abertura").fadeOut();
+                            $("#site").addClass("site-show");
+                            $("#tag").addClass("tag-show");
+
+                            //Com imagem
+                            if( comImagem ) {
+                                $("#bg-text").addClass("bar-show");
+
                                 setTimeout(function() {
+                                    $("#titulo").fadeIn();
+                                    setTimeout(function() {
+                                        $("#texto").fadeIn();
+                                    }, 500);
                                     $("#texto").fadeIn();
-                                }, 500);
+                                }, 300);
+
+                            } else { //Sem imagem
+                                $("#titulo").show();
+                                $("#titulo").addClass("title-show");
                                 $("#texto").fadeIn();
-                            }, 300);
-                            
-                        } else { //Sem imagem
-                            $("#titulo").show();
-                            $("#titulo").addClass("title-show");
-                            $("#texto").fadeIn();
-                            $("#fundo-texto").addClass('bg-text-show');
+                                $("#fundo-texto").addClass('bg-text-show');
+                            }
                         }
-                    }
-                };
+                    };
+                } else {
+                                    
+                }
             }
             
             //Autoplay - localhost

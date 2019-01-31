@@ -56,13 +56,29 @@
                             //Separa as linhas
                             var texto = $("#texto").text();
                             var limite = 91;
-                            var lin1 = $("#texto").text();
-                            var lin2 = null;
+                            var lin1 = "";
+                            var lin2 = "";
                             if( texto.length > limite ) {
                                 
                                 //Mais linhas
-                               lin1 = $("#texto").text().substr(0,limite);
-                               lin2 = $("#texto").text().substr(limite);
+                                var palavras = texto.split(" ");
+                                for( i in palavras ) {
+                                    var strTmp = lin1 + palavras[i];
+                                    if( strTmp.length < limite ) {
+                                        lin1 += palavras[i] + " ";
+                                    } else {
+                                        lin2 += palavras[i] + " ";
+                                    }
+                                }
+                            } else {
+                                
+                                //Verifica se tem quebra de linha forçada
+                                if( texto.indexOf("\n") > -1 ) {
+                                    lin1 = texto.substr(0, texto.indexOf("\n"));
+                                    lin2 = texto.substr(texto.indexOf("\n"));
+                                } else {
+                                    lin1 = texto;
+                                }
                             }
                             
                             //Linha 1

@@ -20,11 +20,18 @@
         
         <!-- Abertura/fundo -->
         <video id="abertura" src="./media/abertura.mp4"></video>
+        
+        <!-- Calhau -->
+        <video id="calhau" src="./media/calhau.mp4?a=1" ></video>
 
         <!-- Scripts -->
         <script src="../../lib/js/jquery-3.1.1.min.js"></script>
         <script src="../../lib/js/GnLib.js"></script>
         <script>
+            var possuiConteudo = true;
+            if (typeof (GnContentFound) != 'undefined') {
+                GnContentFound();
+            }
             
             $(function () {
                 
@@ -47,33 +54,42 @@
             //Autoplay
             function GnPlay() {
                 
-                //Dá play no vídeo
-                var video = $("#abertura").get(0);
-                video.play();
+                if( possuiConteudo ) {
                 
-                //Agenda a exibição do conteúdo
-                var contentLoaded = false;
-                video.ontimeupdate = function() {
-                    if( video.currentTime > 6.2 && !contentLoaded ) {
-                        contentLoaded = true;
-                        
-                        //Período
-                        $("#periodo").show();
-                        $("#periodo").addClass('show-periodo');
-                        
-                        //Texto
-                        setTimeout(function() {
-                            $("#texto").show();
-                            $("#texto").addClass('animated zoomIn fadeIn');
-                        }, 600);
-                        
-                        //Local
-                        setTimeout(function() {
-                            $("#local").show();
-                            $("#local").addClass('animated fadeIn zoomIn');
-                        }, 1600);
-                    }
-                };
+                    //Dá play no vídeo
+                    var video = $("#abertura").get(0);
+                    video.play();
+
+                    //Agenda a exibição do conteúdo
+                    var contentLoaded = false;
+                    video.ontimeupdate = function() {
+                        if( video.currentTime > 6.2 && !contentLoaded ) {
+                            contentLoaded = true;
+
+                            //Período
+                            $("#periodo").show();
+                            $("#periodo").addClass('show-periodo');
+
+                            //Texto
+                            setTimeout(function() {
+                                $("#texto").show();
+                                $("#texto").addClass('animated zoomIn fadeIn');
+                            }, 600);
+
+                            //Local
+                            setTimeout(function() {
+                                $("#local").show();
+                                $("#local").addClass('animated fadeIn zoomIn');
+                            }, 1600);
+                        }
+                    };
+                    
+                } else {
+                    
+                    //Não encontrou conteúdo
+                    $("#calhau").show();
+                    $("#calhau").get(0).play();
+                }
             }
             
             //Autoplay - localhost
@@ -83,6 +99,10 @@
                 }, 1000);
             }
             
+            //Chama o calhau
+            GnLib.dump = function() {
+                possuiConteudo = false;
+            }
         </script>
     </body>
 </html>

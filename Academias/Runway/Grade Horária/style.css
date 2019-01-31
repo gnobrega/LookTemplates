@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'Zurich Condensed BT';
+    src: url('./fonts/Zurich Condensed BT.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 1360px;
+    height: 768px;
+}
+body {
+    background: #000;
+    overflow: hidden;
+}
+video#fundo {
+    width: 1360px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#hora {
+    position: absolute;
+    top: 698px;
+    left: 1155px;
+    color: #FFF;
+    font-size: 62px;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-style: italic;
+    display: none;
+}
+#hora span {
+    color: #CCCCCC;
+}
+#barra {
+    position: absolute;
+    background: url(./media/barra.png);
+    width: 1364px;
+    height: 88px;
+    left: 0;
+    top: 686px;
+}
+#data {
+    font-size: 48px;
+    color: #F9F9F9;
+    font-family: 'Nexa Bold';
+    position: absolute;
+    top: 96px;
+    left: 411px;
+    display: none;
+}
+/* Dados */
+#conteudo { 
+}
+.horario {
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 40px;
+    font-family: 'Zurich Condensed BT';
+    left: 68px;
+    text-align: center;
+}
+.horario div.sub {
+}
+.linha1 {
+    top: 179px;
+    display: none;
+}
+.linha2 {
+    top: 264px;
+    display: none;
+}
+.linha2 {
+    color: #fff !important;
+    display: none;
+}
+.linha2 div.sub {
+    display: none;
+    display: none;
+}
+.linha3 {
+    top: 348px;
+    display: none;
+}
+.linha4 {
+    top: 431px;
+    display: none;
+}
+.linha5 {
+    top: 514px;
+    display: none;
+}
+.linha6 {
+    top: 603px;
+    display: none;
+}
+.campo1 {
+    left: 268px;
+    width: 408px;
+}
+.campo2 {
+    left: 698px;
+    width: 305px;
+}
+.campo3 {
+    left: 1025px;
+    width: 321px;
+}
+.campo {
+    position: absolute;
+    height: 50px;
+    color: #FFFFFF;
+    font-size: 40px;
+    font-family: 'Zurich Condensed BT';
+    overflow: hidden;
+    text-align: center;
+    margin-top: 6px;
+}
+
+/* animation */
+.mostra-data {
+    animation-name: mostra-data;
+    animation-duration: .5s;
+}
+@keyframes mostra-data{
+    from {
+        top: 70px;
+        opacity: 0;
+    }
+    to {
+        top: 96px;
+        opacity: 1;
+    }
+}
