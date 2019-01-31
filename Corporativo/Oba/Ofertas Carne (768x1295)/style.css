@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'Itchy Handwriting_0';
+    src: url('./fonts/Itchy Handwriting_0.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TypeType - TT Limes Sans Black_0';
+    src: url('./fonts/TypeType - TT Limes Sans Black_0.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 768px;
+    height: 1295px;
+}
+body {
+    background: #FEE9DC;
+    overflow: hidden;
+}
+/* Dados */
+#conteudo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 768px;
+    height: 1295px;
+}
+#abertura {
+    width: 768px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+#calhau {
+    width: 1360px;
+    position: absolute;
+    top: 1360px;
+    left: 0;
+    display: none;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+}
+#cortina {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 768px;
+    height: 1295px;
+    background: #FEE9DC;
+}
+#fundo {
+    width: 768px;
+    height: 1295px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background: url(./media/fundo.png);
+}
+#ctFechamento {
+    display: none;
+}
+#fechamento {
+    width: 768px;
+    height: 1295px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background: url(./media/fechamento.jpg);
+}
+div#produto {
+    position: absolute;
+    left: 45px;
+    top: 630px;
+    font-family: 'Itchy Handwriting_0';
+    color: #fff;
+    font-size: 100px;
+    text-align: center;
+    width: 674px;
+    line-height: 90px;
+}
+div#preco {
+    position: absolute;
+    left: 130px;
+    top: 785px;
+    font-family: 'TypeType - TT Limes Sans Black_0';
+    color: #fff;
+    font-size: 300px;
+    text-align: right;
+    width: 360px;
+}
+div#cents {
+    position: absolute;
+    left: 483px;
+    top: 821px;
+    font-family: 'TypeType - TT Limes Sans Black_0';
+    color: #fff;
+    font-size: 175px;
+    text-align: left;
+}
+div#unidade {
+    position: absolute;
+    left: 503px;
+    top: 982px;
+    font-family: 'TypeType - TT Limes Sans Black_0';
+    color: #fff;
+    font-size: 100px;
+    text-align: left;
+    width: 200px;
+}
+div#validade {
+    position: absolute;
+    left: 61px;
+    top: 1163px;
+    font-family: 'Times News Roman';
+    color: #fff;
+    font-size: 21px;
+    width: 650px;
+    text-align: center;
+}
+img#fileId {
+    position: absolute;
+    top: 0px;
+    left: 0px;    
+    width: 768px;
+}
+.subir-abertura {
+    animation-name: subir-abertura;
+    animation-duration: .5s;
+}
+.fechar {
+    animation-name: fechar;
+    animation-duration: .4s;
+}
+@keyframes subir-abertura{
+    from {
+        left: 0px;
+    }
+    to {
+        left: -768px;
+    }
+}
+@keyframes fechar{
+    from {
+        left: 768px;
+    }
+    to {
+        left: 0;
+    }
+}
