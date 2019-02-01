@@ -66,13 +66,14 @@
                 });
 
                 //Agenda a transição
-                setTimeout(exibirProximaPagina, 15000);
+                setTimeout(exibirProximaPagina, 20000);
 
                 //Altera o índice
                 pagInd++;
                 if (pagInd >= PAGINAS.length) {
                     pagInd = 0;
-                    window.location = "?autoplay=true";
+                    //window.location = "?autoplay=true";
+                    toAdvance();
                 }
             }
 
@@ -107,10 +108,17 @@
                             pagina = paginaAtual();
                         }
                         
+                        //Verifica se irá iniciar um novo bloco
+                        if( andarAtual != sala.andarId ) {
+                            TOTAL_LINHAS_TMP = TOTAL_LINHAS - 1;
+                        } else {
+                            TOTAL_LINHAS_TMP = TOTAL_LINHAS;
+                        }
+                        
                         //Cria a coluna
                         if (pagina.colunas.length == 0
                                 || (
-                                    LINHA_ATUAL >= TOTAL_LINHAS
+                                    LINHA_ATUAL >= TOTAL_LINHAS_TMP
                                     && pagina && pagina.colunaAtual() && pagina.colunaAtual().blocoAtual() 
                                     && pagina.colunaAtual().blocoAtual().linhaAtual() 
                                     && pagina.colunaAtual().blocoAtual().linhaAtual().itens.length >= 2
@@ -395,11 +403,11 @@
                     //Monta o html dos itens
                     for (i in this.itens) {
                         var item = this.itens[i];
-                        var itemHtml = $("<div class='item'></div>");
-                        var numeroHtml = $("<div class='numero " + this.bgNumero + "'>" + item.numero + "</div>");
-                        itemHtml.append(numeroHtml);
-                        var nomeHtml = $("<div class='nome'>" + item.nome + "</div>");
-                        itemHtml.append(nomeHtml);
+                        var itemHtml = $("<div class='item'><table><tr></tr></table></div>");
+                        var numeroHtml = $("<td class='numero " + this.bgNumero + "'>" + item.numero + "</td>");
+                        itemHtml.find("tr").append(numeroHtml);
+                        var nomeHtml = $("<td class='nome'>" + item.nome + "</td>");
+                        itemHtml.find("tr").append(nomeHtml);
                         linhaHtml.append(itemHtml);
                     }
 
@@ -424,6 +432,21 @@
             function adicionarPagina() {
                 PAGINAS.push(new Pagina());
             }
+            
+            //Avança para o próximo template
+            function toAdvance() {
+                console.log('toAdvance');
+                if (typeof (GnContentAdvance) != 'undefined') {
+                    GnContentAdvance();
+                }
+            }
+            
+            //Envia pings ao player para manter a atividade
+            setInterval(function() {
+                if( typeof(parent.callApplication) != 'undefined' ) {
+                    parent.callApplication({msg:"Sic - PING"});
+                }
+            }, 60000);
 
         </script>
     </body>

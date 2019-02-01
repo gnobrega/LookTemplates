@@ -37,24 +37,24 @@ html, body, .pagina, .coluna {
     font-size: 40px;
     padding-left: 10px;
 }
-div.item div.numero {
+div.item .numero {
     min-width: 61px;
     height: 56px;
-    float: left;
     text-align: center;
     padding-top: 5px;
     padding-left: 4px;
     padding-right: 4px;
 }
-div.item div.nome {
+div.item .nome {
     float: left;    
-    width: 576px;
+    /*width: 576px;*/
     padding-top: 10px;
     padding-left: 15px;
-    height: 51px;
+    height: 40px;
     border-left: 1px solid #202020;
     border-right: 1px solid #202020;
     font-size: 35px;
+    overflow: hidden;
 }
 .linha {
     background: url(./media/fundo-sala.jpg);
